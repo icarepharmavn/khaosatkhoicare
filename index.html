@@ -297,17 +297,19 @@ async function submitForm() {
   const scaleLabels = {'1':'1 - Không kịp thời','2':'2 - Chưa kịp thời','3':'3 - Bình thường','4':'4 - Kịp thời','5':'5 - Rất kịp thời'};
   const goiYEl = document.getElementById('textarea-goiy');
   const goiY = goiYEl ? goiYEl.value.trim() : '';
-  const payload = {
-    q1: q0.value || '',
-    q2: q1Val || '',
-    q3: q2.value || '',
-    q4: (document.getElementById('q3') || {value:''}).value || '—',
-    q5: scaleLabels[q4.dataset.val] || q4.dataset.val,
-    q6: q5.value || '',
-    q7: q6.value || '',
-    q8: '✓',
-    q9: goiY !== '' ? goiY : '(Không có góp ý)'
-  };
+  const goiYEl = document.getElementById('textarea-goiy');
+const goiYVal = goiYEl ? goiYEl.value.trim() : '';
+const payload = {
+  q1: q0.value || '',
+  q2: q1Val || '',
+  q3: q2.value || '',
+  q4: (document.getElementById('q3')||{value:''}).value || '—',
+  q5: {'1':'1 - Không kịp thời','2':'2 - Chưa kịp thời','3':'3 - Bình thường','4':'4 - Kịp thời','5':'5 - Rất kịp thời'}[q4.dataset.val] || q4.dataset.val,
+  q6: q5.value || '',
+  q7: q6.value || '',
+  q8: 'check_ok',
+  q9: goiYVal !== '' ? goiYVal : '(Không có góp ý)'
+};
 
   try {
     await fetch(SHEET_URL, {
