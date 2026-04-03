@@ -294,23 +294,18 @@ async function submitForm() {
     if (detail) q1Val = 'Khác: ' + detail;
   }
 
+  const scaleLabels = {'1':'1 - Không kịp thời','2':'2 - Chưa kịp thời','3':'3 - Bình thường','4':'4 - Kịp thời','5':'5 - Rất kịp thời'};
+  const goiYEl = document.getElementById('q7');
+  const goiY = goiYEl ? goiYEl.value.trim() : '';
   const payload = {
     q1: q0.value,
     q2: q1Val,
     q3: q2.value,
     q4: document.getElementById('q3').value || '—',
-q5: (() => {
-  const labels = {
-    '1':'1 - Không kịp thời',
-    '2':'2 - Chưa kịp thời',
-    '3':'3 - Bình thường',
-    '4':'4 - Kịp thời',
-    '5':'5 - Rất kịp thời'
-  };
-  return labels[q4.dataset.val] || q4.dataset.val;
-})(),    q6: q5.value,
+    q5: scaleLabels[q4.dataset.val] || q4.dataset.val,
+    q6: q5.value,
     q7: q6.value,
-    q8: document.getElementById('q7').value || '—'
+    q8: goiY !== '' ? goiY : '—'
   };
 
   try {
