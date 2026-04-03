@@ -298,14 +298,15 @@ async function submitForm() {
   const goiYEl = document.getElementById('textarea-goiy');
   const goiY = goiYEl ? goiYEl.value.trim() : '';
   const payload = {
-    q1: q0.value,
-    q2: q1Val,
-    q3: q2.value,
-    q4: document.getElementById('q3').value || '—',
+    q1: q0.value || '',
+    q2: q1Val || '',
+    q3: q2.value || '',
+    q4: (document.getElementById('q3') || {value:''}).value || '—',
     q5: scaleLabels[q4.dataset.val] || q4.dataset.val,
-    q6: q5.value,
-    q7: q6.value,
-    q8: goiY !== '' ? goiY : '—'
+    q6: q5.value || '',
+    q7: q6.value || '',
+    q8: '✓',
+    q9: goiY !== '' ? goiY : '(Không có góp ý)'
   };
 
   try {
