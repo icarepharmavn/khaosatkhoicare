@@ -196,7 +196,7 @@ footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--muted);letter
     <div class="q-block">
       <div class="q-label"><span class="q-num">8</span><span>Bạn có góp ý gì để kho làm việc tốt hơn không? <span style="color:var(--muted);font-size:13px;font-weight:400">(không bắt buộc)</span></span></div>
       <div class="input-wrap">
-        <textarea class="text-area" id="q7" placeholder="Chia sẻ thêm nếu bạn muốn — mọi góp ý đều được ghi nhận..."></textarea>
+        <textarea class="text-area" id="textarea-goiy" placeholder="Chia sẻ thêm nếu bạn muốn — mọi góp ý đều được ghi nhận..."></textarea>
       </div>
     </div>
   </div>
@@ -295,7 +295,7 @@ async function submitForm() {
   }
 
   const scaleLabels = {'1':'1 - Không kịp thời','2':'2 - Chưa kịp thời','3':'3 - Bình thường','4':'4 - Kịp thời','5':'5 - Rất kịp thời'};
-  const goiYEl = document.getElementById('q7');
+  const goiYEl = document.getElementById('textarea-goiy');
   const goiY = goiYEl ? goiYEl.value.trim() : '';
   const payload = {
     q1: q0.value,
